@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenda Machado - Computer Science Researcher</title>
+    <title>Brenda Machado - Computer Science Student</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -588,10 +588,10 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Brenda Machado</h1>
-            <p class="hero-subtitle">Computer Science Researcher & Machine Learning Enthusiast</p>
+            <p class="hero-subtitle">Computer Science Student & Machine Learning Enthusiast</p>
             <p class="hero-description">
                 Estudante de graduação em Ciência da Computação na UFSC, pesquisando Robótica Adaptativa, 
-                Estratégias Evolutivas e Deep Learning. Focada na integração entre tecnologia e sociedade.
+                Estratégias Evolutivas e Deep Learning. Grande interesse na integração entre tecnologia e sociedade.
             </p>
             <div class="cta-buttons">
                 <a href="#papers" class="btn btn-primary">
@@ -638,8 +638,8 @@
                         <div class="stat-label">Congressos Internacionais</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">1</div>
-                        <div class="stat-label">Publicação GECCO</div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Publicações</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">3</div>
@@ -699,41 +699,61 @@
         <div class="container">
             <div class="section-header">
                 <h2>Publicações e Artigos</h2>
-                <p>Trabalhos científicos publicados em conferências e workshops internacionais</p>
+                <p>Trabalhos científicos publicados em conferências, revistas ou workshops</p>
             </div>
             <div class="papers-grid">
                 <div class="paper-card">
-                    <h3 class="paper-title">Adaptive Robotics using Evolution Strategies: A Comprehensive Study</h3>
-                    <p class="paper-authors">Brenda Machado, [Co-autores]</p>
+                    <h3 class="paper-title">The Effectiveness of Niching on OpenAI-Evolution Strategies in the Evolution of Robotic Behavior</h3>
+                    <p class="paper-authors">Arthur Holtrup Bianchini, Brenda Silva Machado, Jônata Tyska Carvalho</p>
                     <p class="paper-venue">GECCO'23 Student Workshop - Lisbon, Portugal</p>
                     <p class="paper-description">
-                        Este artigo apresenta uma investigação abrangente sobre o uso de estratégias evolutivas 
-                        em robótica adaptativa, demonstrando como sistemas robóticos podem evoluir e se adaptar 
-                        dinamicamente a ambientes complexos e em mudança.
+                        The objective of this work is to analyze how a recent adaptation of Evolution Strategies developed by OpenAI, which we call OpenAI-ES, behaves when working alongside environmental variation and niching techniques. The results showed that this approach applied to the double pole balancing benchmark can improve performance by 9% for OpenAI-ES.
                     </p>
                     <div class="paper-links">
-                        <a href="#" class="paper-link">
+<!--                         <a href="#" class="paper-link">
                             <i class="fas fa-file-pdf"></i>
                             PDF
-                        </a>
-                        <a href="#" class="paper-link">
+                        </a> -->
+                        <a href="https://github.com/Brenda-Machado/stripped-down-version-of-evorobotpy2" class="paper-link">
                             <i class="fab fa-github"></i>
                             Código
                         </a>
-                        <a href="#" class="paper-link">
+                        <a href="https://dl.acm.org/doi/10.1145/3583133.3596341" class="paper-link">
                             <i class="fas fa-external-link-alt"></i>
-                            DOI
+                            Publicação
+                        </a>
+                    </div>
+                </div>
+                <div class="paper-card">
+                    <h3 class="paper-title">Investigação da Eficácia de Técnicas de Nicho e Diferenciação Ambiental aplicadas a Algoritmos da Robótica Evolutiva</h3>
+                    <p class="paper-authors">Brenda Silva Machado, Arthur Holtrup Bianchini, Jônata Tyska Carvalho</p>
+                    <p class="paper-venue">REVISTA COMING COMPET'23 - UFSM </p>
+                    <p class="paper-description">
+                        Este trabalho tem o objetivo de analisar como a adição de técnicas de nicho, que incluem diferenciação ambiental entre as subpopulações, podem ser relevantes a algoritmos da Robótica Evolutiva utilizando a versão do algoritmo ES recentemente proposto pela OpenAI.
+                    </p>
+                    <div class="paper-links">
+<!--                         <a href="#" class="paper-link">
+                            <i class="fas fa-file-pdf"></i>
+                            PDF
+                        </a> -->
+                        <a href="https://github.com/Brenda-Machado/evorobotpy2-with-ne" class="paper-link">
+                            <i class="fab fa-github"></i>
+                            Código
+                        </a>
+                        <a href="https://periodicos.ufsm.br/coming/article/view/85256">
+                            <i class="fas fa-external-link-alt"></i>
+                            Publicação
                         </a>
                     </div>
                 </div>
                 
                 <!-- Placeholder para futuros artigos -->
                 <div class="paper-card" style="opacity: 0.7; border-style: dashed;">
-                    <h3 class="paper-title">Behavior Cloning for Autonomous Driving in CARLA Simulator</h3>
+                    <h3 class="paper-title">Estudo em Behavior Cloning aplicado a veículos autônomos</h3>
                     <p class="paper-authors">Brenda Machado, [Co-autores]</p>
                     <p class="paper-venue">Em desenvolvimento - 2024/2025</p>
                     <p class="paper-description">
-                        Trabalho em andamento explorando técnicas de Behavior Cloning para veículos autônomos, 
+                        Trabalho referente a uma bolsa PIBIC em andamento explorando técnicas de Behavior Cloning para veículos autônomos, 
                         utilizando o simulador CARLA e técnicas avançadas de deep learning para imitação de 
                         comportamento de condução.
                     </p>
@@ -758,21 +778,19 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-header">
-                        <h3 class="project-title">Adaptive Robotics Framework</h3>
+                        <h3 class="project-title">Simple BC Tutorial</h3>
                         <p class="project-description">
-                            Framework para desenvolvimento de sistemas robóticos adaptativos utilizando 
-                            estratégias evolutivas. Inclui implementações de algoritmos genéticos e 
-                            ferramentas de simulação.
+                            Simples implementação para instrução de alunos com interesse na área de Imitation Learning, usando o CarRacingV0 da biblioteca Gymnasium e uma CNN implementada em PyTorch.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">PyTorch</span>
                             <span class="tech-tag">OpenAI Gym</span>
-                            <span class="tech-tag">Evolutionary Algorithms</span>
+                            <span class="tech-tag">Convolucional Neural Network</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Brenda-Machado" class="project-link">
+                        <a href="https://github.com/Brenda-Machado/simple-bc-tutorial" class="project-link">
                             <i class="fab fa-github"></i>
                             Código
                         </a>
@@ -783,7 +801,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+<!--                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">CARLA Behavior Cloning</h3>
                         <p class="project-description">
@@ -808,9 +826,9 @@
                             Resultados
                         </a>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="project-card">
+<!--                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">ML Research Tools</h3>
                         <p class="project-description">
@@ -835,7 +853,7 @@
                             Docs
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -883,5 +901,58 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <div class="contact-text">
+                                <strong>LinkedIn</strong><br>
+                                <a href="https://linkedin.com/in/brenda-silva-machado-93bbab244" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                    brenda-silva-machado
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <div class="contact-text">
+                                <strong>GitHub</strong><br>
+                                <a href="https://github.com/Brenda-Machado" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                    Brenda-Machado
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="contact-text">
+                                <strong>Email Acadêmico</strong><br>
+                                brenda.silva.machado@grad.ufsc.br
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/brenda-silva-machado-93bbab244" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Brenda-Machado" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:brenda.silva.machado@grad.ufsc.br" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://orcid.org/0009-0006-6507-4782" target="_blank" class="social-link">
+                    <i class="fab fa-orcid"></i>
+                </a>
+            </div>
