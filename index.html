@@ -79,6 +79,38 @@
             color: var(--primary-color);
         }
 
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
         .mobile-menu {
             display: none;
             color: var(--text-primary);
@@ -498,6 +530,15 @@
             color: var(--text-secondary);
         }
 
+        /* Language specific content visibility */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -506,6 +547,11 @@
 
             .mobile-menu {
                 display: block;
+            }
+
+            .language-toggle {
+                flex-direction: column;
+                gap: 0.5rem;
             }
 
             .hero h1 {
@@ -571,13 +617,23 @@
         <div class="nav-container">
             <div class="logo">Brenda Machado</div>
             <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#research">Pesquisa</a></li>
-                <li><a href="#papers">Artigos</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#home" data-pt="Início" data-en="Home">Início</a></li>
+                <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="#research" data-pt="Pesquisa" data-en="Research">Pesquisa</a></li>
+                <li><a href="#papers" data-pt="Artigos" data-en="Papers">Artigos</a></li>
+                <li><a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="#contact" data-pt="Contato" data-en="Contact">Contato</a></li>
             </ul>
+            <div class="language-toggle">
+                <button class="lang-btn active" onclick="switchLanguage('pt')" id="pt-btn">
+                    <i class="fas fa-flag"></i>
+                    PT
+                </button>
+                <button class="lang-btn" onclick="switchLanguage('en')" id="en-btn">
+                    <i class="fas fa-flag"></i>
+                    EN
+                </button>
+            </div>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
@@ -588,20 +644,43 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Brenda Machado</h1>
-            <p class="hero-subtitle">Computer Science Student & Machine Learning Enthusiast</p>
-            <p class="hero-description">
-                Estudante de graduação em Ciência da Computação na UFSC, pesquisando Robótica Adaptativa, 
-                Estratégias Evolutivas e Deep Learning. Grande interesse na integração entre tecnologia e sociedade.
-            </p>
-            <div class="cta-buttons">
-                <a href="#papers" class="btn btn-primary">
-                    <i class="fas fa-file-alt"></i>
-                    Ver Publicações
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-envelope"></i>
-                    Entrar em Contato
-                </a>
+            
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="pt-content">
+                <p class="hero-subtitle">Computer Science Student & Machine Learning Enthusiast</p>
+                <p class="hero-description">
+                    Estudante de graduação em Ciência da Computação na UFSC, pesquisando Robótica Adaptativa, 
+                    Estratégias Evolutivas e Deep Learning. Grande interesse na integração entre tecnologia e sociedade.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#papers" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i>
+                        Ver Publicações
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Entrar em Contato
+                    </a>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" id="en-content">
+                <p class="hero-subtitle">Computer Science Student & Machine Learning Enthusiast</p>
+                <p class="hero-description">
+                    Undergraduate Computer Science student at UFSC, researching Adaptive Robotics, 
+                    Evolutionary Strategies, and Deep Learning. Strong interest in the integration between technology and society.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#papers" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i>
+                        View Publications
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get in Touch
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -609,41 +688,86 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <div class="section-header">
-                <h2>Sobre Mim</h2>
-                <p>Conheça minha trajetória acadêmica e áreas de interesse em pesquisa</p>
-            </div>
-            <div class="about-grid">
-                <div>
-                    <p class="about-text">
-                        Sou estudante de graduação em Ciência da Computação na Universidade Federal de 
-                        Santa Catarina (UFSC), com previsão de formatura em 2026. Atualmente, desenvolvo 
-                        pesquisas em Robótica Adaptativa e Estratégias Evolutivas no Laboratório de 
-                        Integração de Sistemas e Aplicações (LISA).
-                    </p>
-                    <p class="about-text">
-                        Minha experiência inclui bolsa PET Computação/Informática UFSC desde 2021, 
-                        participação em congressos internacionais como GECCO'22 e GECCO'23, e 
-                        atualmente sou bolsista PIBIC pesquisando Imitation Learning e Behavior 
-                        Cloning com simuladores de direção autônoma.
-                    </p>
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="about-pt">
+                <div class="section-header">
+                    <h2>Sobre Mim</h2>
+                    <p>Conheça minha trajetória acadêmica e áreas de interesse em pesquisa</p>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">4+</div>
-                        <div class="stat-label">Anos de Pesquisa</div>
+                <div class="about-grid">
+                    <div>
+                        <p class="about-text">
+                            Sou estudante de graduação em Ciência da Computação na Universidade Federal de 
+                            Santa Catarina (UFSC), com previsão de formatura em 2026. Atualmente, desenvolvo 
+                            pesquisas em Robótica Adaptativa e Estratégias Evolutivas no Laboratório de 
+                            Integração de Sistemas e Aplicações (LISA).
+                        </p>
+                        <p class="about-text">
+                            Minha experiência inclui bolsa PET Computação/Informática UFSC desde 2021, 
+                            participação em congressos internacionais como GECCO'22 e GECCO'23, e 
+                            atualmente sou bolsista PIBIC pesquisando Imitation Learning e Behavior 
+                            Cloning com simuladores de direção autônoma.
+                        </p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Congressos Internacionais</div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4+</div>
+                            <div class="stat-label">Anos de Pesquisa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Congressos Internacionais</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Publicações</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Projetos Ativos</div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Publicações</div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" id="about-en">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <p>Learn about my academic journey and research interests</p>
+                </div>
+                <div class="about-grid">
+                    <div>
+                        <p class="about-text">
+                            I am an undergraduate Computer Science student at the Federal University of 
+                            Santa Catarina (UFSC), with expected graduation in 2026. Currently, I develop 
+                            research in Adaptive Robotics and Evolutionary Strategies at the Laboratory of 
+                            Systems Integration and Applications (LISA).
+                        </p>
+                        <p class="about-text">
+                            My experience includes a PET Computing/Informatics UFSC scholarship since 2021, 
+                            participation in international conferences such as GECCO'22 and GECCO'23, and 
+                            currently I am a PIBIC scholarship holder researching Imitation Learning and Behavior 
+                            Cloning with autonomous driving simulators.
+                        </p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Projetos Ativos</div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4+</div>
+                            <div class="stat-label">Years of Research</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">International Conferences</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Publications</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Active Projects</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -653,42 +777,87 @@
     <!-- Research Areas -->
     <section id="research">
         <div class="container">
-            <div class="section-header">
-                <h2>Áreas de Pesquisa</h2>
-                <p>Principais focos de investigação científica e desenvolvimento tecnológico</p>
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="research-pt">
+                <div class="section-header">
+                    <h2>Áreas de Pesquisa</h2>
+                    <p>Principais focos de investigação científica e desenvolvimento tecnológico</p>
+                </div>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Robótica Adaptativa</h3>
+                        <p>Desenvolvimento de sistemas robóticos que se adaptam dinamicamente ao ambiente, 
+                        utilizando estratégias evolutivas para otimização de comportamentos e tomada de decisão autônoma.</p>
+                    </div>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning & Deep Learning</h3>
+                        <p>Aplicação de técnicas de aprendizado profundo em problemas de imitação de comportamento, 
+                        com foco em veículos autônomos e simuladores como CARLA.</p>
+                    </div>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h3>Estratégias Evolutivas</h3>
+                        <p>Implementação e otimização de algoritmos evolutivos para resolução de problemas 
+                        complexos em robótica e inteligência artificial.</p>
+                    </div>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Veículos Autônomos</h3>
+                        <p>Pesquisa em Behavior Cloning e Imitation Learning aplicados à condução autônoma, 
+                        utilizando simuladores avançados e técnicas de deep learning.</p>
+                    </div>
+                </div>
             </div>
-            <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Robótica Adaptativa</h3>
-                    <p>Desenvolvimento de sistemas robóticos que se adaptam dinamicamente ao ambiente, 
-                    utilizando estratégias evolutivas para otimização de comportamentos e tomada de decisão autônoma.</p>
+
+            <!-- English Content -->
+            <div class="lang-content" id="research-en">
+                <div class="section-header">
+                    <h2>Research Areas</h2>
+                    <p>Main focuses of scientific investigation and technological development</p>
                 </div>
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-brain"></i>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Adaptive Robotics</h3>
+                        <p>Development of robotic systems that adapt dynamically to the environment, 
+                        using evolutionary strategies for behavior optimization and autonomous decision making.</p>
                     </div>
-                    <h3>Machine Learning & Deep Learning</h3>
-                    <p>Aplicação de técnicas de aprendizado profundo em problemas de imitação de comportamento, 
-                    com foco em veículos autônomos e simuladores como CARLA.</p>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-dna"></i>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning & Deep Learning</h3>
+                        <p>Application of deep learning techniques in behavior imitation problems, 
+                        focusing on autonomous vehicles and simulators like CARLA.</p>
                     </div>
-                    <h3>Estratégias Evolutivas</h3>
-                    <p>Implementação e otimização de algoritmos evolutivos para resolução de problemas 
-                    complexos em robótica e inteligência artificial.</p>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-car"></i>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h3>Evolutionary Strategies</h3>
+                        <p>Implementation and optimization of evolutionary algorithms for solving 
+                        complex problems in robotics and artificial intelligence.</p>
                     </div>
-                    <h3>Veículos Autônomos</h3>
-                    <p>Pesquisa em Behavior Cloning e Imitation Learning aplicados à condução autônoma, 
-                    utilizando simuladores avançados e técnicas de deep learning.</p>
+                    <div class="research-card">
+                        <div class="research-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Autonomous Vehicles</h3>
+                        <p>Research in Behavior Cloning and Imitation Learning applied to autonomous driving, 
+                        using advanced simulators and deep learning techniques.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -697,71 +866,130 @@
     <!-- Papers Section -->
     <section id="papers">
         <div class="container">
-            <div class="section-header">
-                <h2>Publicações e Artigos</h2>
-                <p>Trabalhos científicos publicados em conferências, revistas ou workshops</p>
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="papers-pt">
+                <div class="section-header">
+                    <h2>Publicações e Artigos</h2>
+                    <p>Trabalhos científicos publicados em conferências, revistas ou workshops</p>
+                </div>
+                <div class="papers-grid">
+                    <div class="paper-card">
+                        <h3 class="paper-title">The Effectiveness of Niching on OpenAI-Evolution Strategies in the Evolution of Robotic Behavior</h3>
+                        <p class="paper-authors">Arthur Holtrup Bianchini, Brenda Silva Machado, Jônata Tyska Carvalho</p>
+                        <p class="paper-venue">GECCO'23 Student Workshop - Lisbon, Portugal</p>
+                        <p class="paper-description">
+                            O objetivo deste trabalho é analisar como uma adaptação recente das Estratégias Evolutivas desenvolvidas pela OpenAI, que chamamos de OpenAI-ES, se comporta quando trabalha junto com variação ambiental e técnicas de niching. Os resultados mostraram que essa abordagem aplicada ao benchmark de balanceamento de dupla haste pode melhorar a performance em 9% para OpenAI-ES.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://github.com/Brenda-Machado/stripped-down-version-of-evorobotpy2" class="paper-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="https://dl.acm.org/doi/10.1145/3583133.3596341" class="paper-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Publicação
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <h3 class="paper-title">Investigação da Eficácia de Técnicas de Nicho e Diferenciação Ambiental aplicadas a Algoritmos da Robótica Evolutiva</h3>
+                        <p class="paper-authors">Brenda Silva Machado, Arthur Holtrup Bianchini, Jônata Tyska Carvalho</p>
+                        <p class="paper-venue">REVISTA COMING COMPET'23 - UFSM </p>
+                        <p class="paper-description">
+                            Este trabalho tem o objetivo de analisar como a adição de técnicas de nicho, que incluem diferenciação ambiental entre as subpopulações, podem ser relevantes a algoritmos da Robótica Evolutiva utilizando a versão do algoritmo ES recentemente proposto pela OpenAI.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://github.com/Brenda-Machado/evorobotpy2-with-ne" class="paper-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="https://periodicos.ufsm.br/coming/article/view/85256" class="paper-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Publicação
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder para futuros artigos -->
+                    <div class="paper-card" style="opacity: 0.7; border-style: dashed;">
+                        <h3 class="paper-title">Estudo em Behavior Cloning aplicado a veículos autônomos</h3>
+                        <p class="paper-authors">Brenda Machado, [Co-autores]</p>
+                        <p class="paper-venue">Em desenvolvimento - 2024/2025</p>
+                        <p class="paper-description">
+                            Trabalho referente a uma bolsa PIBIC em andamento explorando técnicas de Behavior Cloning para veículos autônomos, 
+                            utilizando o simulador CARLA e técnicas avançadas de deep learning para imitação de 
+                            comportamento de condução.
+                        </p>
+                        <div class="paper-links">
+                            <a href="#" class="paper-link" style="opacity: 0.5;">
+                                <i class="fas fa-clock"></i>
+                                Em breve
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="papers-grid">
-                <div class="paper-card">
-                    <h3 class="paper-title">The Effectiveness of Niching on OpenAI-Evolution Strategies in the Evolution of Robotic Behavior</h3>
-                    <p class="paper-authors">Arthur Holtrup Bianchini, Brenda Silva Machado, Jônata Tyska Carvalho</p>
-                    <p class="paper-venue">GECCO'23 Student Workshop - Lisbon, Portugal</p>
-                    <p class="paper-description">
-                        The objective of this work is to analyze how a recent adaptation of Evolution Strategies developed by OpenAI, which we call OpenAI-ES, behaves when working alongside environmental variation and niching techniques. The results showed that this approach applied to the double pole balancing benchmark can improve performance by 9% for OpenAI-ES.
-                    </p>
-                    <div class="paper-links">
-<!--                         <a href="#" class="paper-link">
-                            <i class="fas fa-file-pdf"></i>
-                            PDF
-                        </a> -->
-                        <a href="https://github.com/Brenda-Machado/stripped-down-version-of-evorobotpy2" class="paper-link">
-                            <i class="fab fa-github"></i>
-                            Código
-                        </a>
-                        <a href="https://dl.acm.org/doi/10.1145/3583133.3596341" class="paper-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Publicação
-                        </a>
-                    </div>
+
+            <!-- English Content -->
+            <div class="lang-content" id="papers-en">
+                <div class="section-header">
+                    <h2>Publications and Papers</h2>
+                    <p>Scientific works published in conferences, journals or workshops</p>
                 </div>
-                <div class="paper-card">
-                    <h3 class="paper-title">Investigação da Eficácia de Técnicas de Nicho e Diferenciação Ambiental aplicadas a Algoritmos da Robótica Evolutiva</h3>
-                    <p class="paper-authors">Brenda Silva Machado, Arthur Holtrup Bianchini, Jônata Tyska Carvalho</p>
-                    <p class="paper-venue">REVISTA COMING COMPET'23 - UFSM </p>
-                    <p class="paper-description">
-                        Este trabalho tem o objetivo de analisar como a adição de técnicas de nicho, que incluem diferenciação ambiental entre as subpopulações, podem ser relevantes a algoritmos da Robótica Evolutiva utilizando a versão do algoritmo ES recentemente proposto pela OpenAI.
-                    </p>
-                    <div class="paper-links">
-<!--                         <a href="#" class="paper-link">
-                            <i class="fas fa-file-pdf"></i>
-                            PDF
-                        </a> -->
-                        <a href="https://github.com/Brenda-Machado/evorobotpy2-with-ne" class="paper-link">
-                            <i class="fab fa-github"></i>
-                            Código
-                        </a>
-                        <a href="https://periodicos.ufsm.br/coming/article/view/85256" class="paper-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Publicação
-                        </a>
+                <div class="papers-grid">
+                    <div class="paper-card">
+                        <h3 class="paper-title">The Effectiveness of Niching on OpenAI-Evolution Strategies in the Evolution of Robotic Behavior</h3>
+                        <p class="paper-authors">Arthur Holtrup Bianchini, Brenda Silva Machado, Jônata Tyska Carvalho</p>
+                        <p class="paper-venue">GECCO'23 Student Workshop - Lisbon, Portugal</p>
+                        <p class="paper-description">
+                            The objective of this work is to analyze how a recent adaptation of Evolution Strategies developed by OpenAI, which we call OpenAI-ES, behaves when working alongside environmental variation and niching techniques. The results showed that this approach applied to the double pole balancing benchmark can improve performance by 9% for OpenAI-ES.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://github.com/Brenda-Machado/stripped-down-version-of-evorobotpy2" class="paper-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                            <a href="https://dl.acm.org/doi/10.1145/3583133.3596341" class="paper-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Publication
+                            </a>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Placeholder para futuros artigos -->
-                <div class="paper-card" style="opacity: 0.7; border-style: dashed;">
-                    <h3 class="paper-title">Estudo em Behavior Cloning aplicado a veículos autônomos</h3>
-                    <p class="paper-authors">Brenda Machado, [Co-autores]</p>
-                    <p class="paper-venue">Em desenvolvimento - 2024/2025</p>
-                    <p class="paper-description">
-                        Trabalho referente a uma bolsa PIBIC em andamento explorando técnicas de Behavior Cloning para veículos autônomos, 
-                        utilizando o simulador CARLA e técnicas avançadas de deep learning para imitação de 
-                        comportamento de condução.
-                    </p>
-                    <div class="paper-links">
-                        <a href="#" class="paper-link" style="opacity: 0.5;">
-                            <i class="fas fa-clock"></i>
-                            Em breve
-                        </a>
+                    <div class="paper-card">
+                        <h3 class="paper-title">Investigation of the Effectiveness of Niching Techniques and Environmental Differentiation applied to Evolutionary Robotics Algorithms</h3>
+                        <p class="paper-authors">Brenda Silva Machado, Arthur Holtrup Bianchini, Jônata Tyska Carvalho</p>
+                        <p class="paper-venue">REVISTA COMING COMPET'23 - UFSM </p>
+                        <p class="paper-description">
+                            This work aims to analyze how the addition of niching techniques, which include environmental differentiation between subpopulations, can be relevant to Evolutionary Robotics algorithms using the version of the ES algorithm recently proposed by OpenAI.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://github.com/Brenda-Machado/evorobotpy2-with-ne" class="paper-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                            <a href="https://periodicos.ufsm.br/coming/article/view/85256" class="paper-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Publication
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder for future papers -->
+                    <div class="paper-card" style="opacity: 0.7; border-style: dashed;">
+                        <h3 class="paper-title">Study on Behavior Cloning applied to autonomous vehicles</h3>
+                        <p class="paper-authors">Brenda Machado, [Co-authors]</p>
+                        <p class="paper-venue">In development - 2024/2025</p>
+                        <p class="paper-description">
+                            Work related to an ongoing PIBIC scholarship exploring Behavior Cloning techniques for autonomous vehicles, 
+                            using the CARLA simulator and advanced deep learning techniques for driving 
+                            behavior imitation.
+                        </p>
+                        <div class="paper-links">
+                            <a href="#" class="paper-link" style="opacity: 0.5;">
+                                <i class="fas fa-clock"></i>
+                                Coming soon
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -771,89 +999,72 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <div class="section-header">
-                <h2>Projetos</h2>
-                <p>Repositórios e ferramentas desenvolvidas durante pesquisas e estudos</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Simple BC Tutorial</h3>
-                        <p class="project-description">
-                            Simples implementação para instrução de alunos com interesse na área de Imitation Learning, usando o CarRacingV0 da biblioteca Gymnasium e uma CNN implementada em PyTorch.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">OpenAI Gym</span>
-                            <span class="tech-tag">Convolucional Neural Network</span>
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="projects-pt">
+                <div class="section-header">
+                    <h2>Projetos</h2>
+                    <p>Repositórios e ferramentas desenvolvidas durante pesquisas e estudos</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Simple BC Tutorial</h3>
+                            <p class="project-description">
+                                Simples implementação para instrução de alunos com interesse na área de Imitation Learning, usando o CarRacingV0 da biblioteca Gymnasium e uma CNN implementada em PyTorch.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">OpenAI Gym</span>
+                                <span class="tech-tag">CNN</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Brenda-Machado/simple-bc-tutorial" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Código
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Demo
-                        </a>
+                        <div class="project-links">
+                            <a href="https://github.com/Brenda-Machado/simple-bc-tutorial" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-<!--                 <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">CARLA Behavior Cloning</h3>
-                        <p class="project-description">
-                            Implementação de técnicas de Behavior Cloning para veículos autônomos no 
-                            simulador CARLA. Inclui coleta de dados, treinamento de modelos e avaliação 
-                            de performance.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">CARLA</span>
-                            <span class="tech-tag">Computer Vision</span>
+            <!-- English Content -->
+            <div class="lang-content" id="projects-en">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                    <p>Repositories and tools developed during research and studies</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Simple BC Tutorial</h3>
+                            <p class="project-description">
+                                Simple implementation for instructing students interested in Imitation Learning, using CarRacingV0 from the Gymnasium library and a CNN implemented in PyTorch.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">OpenAI Gym</span>
+                                <span class="tech-tag">CNN</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Brenda-Machado/simple-bc-tutorial" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Demo
+                            </a>
                         </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Brenda-Machado" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Código
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-chart-line"></i>
-                            Resultados
-                        </a>
-                    </div>
-                </div> -->
-
-<!--                 <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">ML Research Tools</h3>
-                        <p class="project-description">
-                            Coleção de ferramentas e utilitários desenvolvidos para apoiar pesquisas 
-                            em machine learning, incluindo visualizações, métricas de avaliação e 
-                            pipelines de dados.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Matplotlib</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Jupyter</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Brenda-Machado" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Código
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-book"></i>
-                            Docs
-                        </a>
-                    </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </section>
@@ -861,81 +1072,168 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Contato</h2>
-                <p>Vamos colaborar! Entre em contato para discutir pesquisas, projetos ou oportunidades</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-university"></i>
+            <!-- Portuguese Content -->
+            <div class="lang-content active" id="contact-pt">
+                <div class="section-header">
+                    <h2>Contato</h2>
+                    <p>Vamos colaborar! Entre em contato para discutir pesquisas, projetos ou oportunidades</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Instituição</strong><br>
+                                    Universidade Federal de Santa Catarina (UFSC)
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>Instituição</strong><br>
-                                Universidade Federal de Santa Catarina (UFSC)
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Laboratório</strong><br>
+                                    LISA - Laboratory of Systems and Applications Integration
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Programa</strong><br>
+                                    Bacharelado em Ciência da Computação (2021-2026)
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>Laboratório</strong><br>
-                                LISA - Laboratory of Systems and Applications Integration
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>LinkedIn</strong><br>
+                                    <a href="https://linkedin.com/in/brenda-silva-machado-93bbab244" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                        brenda-silva-machado
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-graduation-cap"></i>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>GitHub</strong><br>
+                                    <a href="https://github.com/Brenda-Machado" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                        Brenda-Machado
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>Programa</strong><br>
-                                Bacharelado em Ciência da Computação (2021-2026)
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Email Acadêmico</strong><br>
+                                    brenda.silva.machado@grad.ufsc.br
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" id="contact-en">
+                <div class="section-header">
+                    <h2>Contact</h2>
+                    <p>Let's collaborate! Get in touch to discuss research, projects or opportunities</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Institution</strong><br>
+                                    Federal University of Santa Catarina (UFSC)
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>LinkedIn</strong><br>
-                                <a href="https://linkedin.com/in/brenda-silva-machado-93bbab244" target="_blank" style="color: var(--primary-color); text-decoration: none;">
-                                    brenda-silva-machado
-                                </a>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Laboratory</strong><br>
+                                    LISA - Laboratory of Systems and Applications Integration
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Program</strong><br>
+                                    Bachelor in Computer Science (2021-2026)
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>GitHub</strong><br>
-                                <a href="https://github.com/Brenda-Machado" target="_blank" style="color: var(--primary-color); text-decoration: none;">
-                                    Brenda-Machado
-                                </a>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>LinkedIn</strong><br>
+                                    <a href="https://linkedin.com/in/brenda-silva-machado-93bbab244" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                        brenda-silva-machado
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>GitHub</strong><br>
+                                    <a href="https://github.com/Brenda-Machado" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                        Brenda-Machado
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="contact-text">
-                                <strong>Email Acadêmico</strong><br>
-                                brenda.silva.machado@grad.ufsc.br
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="contact-text">
+                                    <strong>Academic Email</strong><br>
+                                    brenda.silva.machado@grad.ufsc.br
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -956,3 +1254,88 @@
                     <i class="fab fa-orcid"></i>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text" id="footer-text-pt" style="display: block;">
+                © 2025 - Brenda Silva Machado.
+            </p>
+            <p class="footer-text" id="footer-text-en" style="display: none;">
+                © 2025 - Brenda Silva Machado.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        let currentLang = 'pt';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.getElementById('pt-btn').classList.toggle('active', lang === 'pt');
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected language content
+            if (lang === 'pt') {
+                document.getElementById('pt-content').classList.add('active');
+                document.getElementById('about-pt').classList.add('active');
+                document.getElementById('research-pt').classList.add('active');
+                document.getElementById('papers-pt').classList.add('active');
+                document.getElementById('projects-pt').classList.add('active');
+                document.getElementById('contact-pt').classList.add('active');
+                document.getElementById('footer-text-pt').style.display = 'block';
+                document.getElementById('footer-text-en').style.display = 'none';
+                document.documentElement.lang = 'pt-BR';
+            } else {
+                document.getElementById('en-content').classList.add('active');
+                document.getElementById('about-en').classList.add('active');
+                document.getElementById('research-en').classList.add('active');
+                document.getElementById('papers-en').classList.add('active');
+                document.getElementById('projects-en').classList.add('active');
+                document.getElementById('contact-en').classList.add('active');
+                document.getElementById('footer-text-pt').style.display = 'none';
+                document.getElementById('footer-text-en').style.display = 'block';
+                document.documentElement.lang = 'en';
+            }
+            
+            // Update navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const text = lang === 'pt' ? link.getAttribute('data-pt') : link.getAttribute('data-en');
+                if (text) {
+                    link.textContent = text;
+                }
+            });
+        }
+
+        // Mobile menu toggle (placeholder for future implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            // Mobile menu functionality can be implemented here
+            console.log('Mobile menu clicked');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
